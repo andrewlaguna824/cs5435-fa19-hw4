@@ -2,17 +2,25 @@
 #include <string.h>
 
 
-greeting( char* temp1, char* temp2 )
+void greeting( char* temp1 )
 {
-	char name[400];
-	memset(name, 0, 400);
-	strcpy(name, temp2);
-	printf( "Hi %s %s\n", temp1, name );
+  char name[400];
+  memset(name, 0, 400);
+  strcpy(name, temp1);
+  printf( "Hi %s \n", temp1);
 }
 
 
 int main(int argc, char* argv[] ) 
 {
-	greeting( argv[1], argv[2] );
-	printf( "Bye %s %s\n", argv[1], argv[2] );
+  greeting( argv[1]);
+  printf( "Bye %s \n", argv[1]);
+  
+  
+  /*
+  int i= 0;
+  for (i = 0; i < 5; i++) {
+    printf("number %d\n", i);
+  }
+  */
 }
